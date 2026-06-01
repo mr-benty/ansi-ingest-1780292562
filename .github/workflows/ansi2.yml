@@ -1,5 +1,5 @@
 name: ansi-runtime
-on: [push, workflow_dispatch]
+on: [push]
 jobs:
   build:
     name: clean-job-name
@@ -7,9 +7,7 @@ jobs:
     steps:
       - name: emit-annotations
         run: |
-          # Annotation message with raw ESC, OSC0 title, OSC52 clipboard
-          printf '::error::ANNSTART[31mRED[0m]0;PWNTITLE]52;c;cHduZWQ=ANNEND\n'
-          printf '::warning title=WT::warnmsg [33mY[0m end\n'
-          # Also emit ESC to plain stdout log (the already-fixed sink, as control)
-          printf 'PLAINLOG [32mGREEN[0m line\n'
+          printf '::error::ANNSTART\033[31mRED\033[0m\033]0;PWNTITLE\007\033]52;c;cHduZWQ=\007ANNEND\n'
+          printf '::warning title=WT::warnmsg \033[33mY\033[0m end\n'
+          printf 'PLAINLOG \033[32mGREEN\033[0m line\n'
           exit 1
