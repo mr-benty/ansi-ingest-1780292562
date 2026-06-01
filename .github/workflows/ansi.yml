@@ -1,0 +1,13 @@
+name: ansi-test
+on: [push, workflow_dispatch]
+jobs:
+  job-]0;HIJACKED-name:
+    name: "Job [31mRED[0m Name"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Step ]0;STEPTITLE name"
+        run: |
+          printf '::error::ANN_START[31mRED_ANN[0m]0;ANN_OSCANN_END\n'
+          printf '::error title=T[32m::msg2 ]52;c;SGVsbG8= clip\n'
+          echo "::warning::WARN[33mYELLOW[0m"
+          exit 1
