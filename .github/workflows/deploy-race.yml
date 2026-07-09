@@ -7,4 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: race-test-prod
     steps:
-      - run: echo "Deployed at $(date)"
+      - name: Prove secret access
+        env:
+          CANARY: ${{ secrets.RACE_CANARY }}
+        run: |
+          echo "Deploy at $(date)"
+          if [ -n "$CANARY" ]; then
+            echo "SECRET_ACCESSED=true (length=${#CANARY})"
+          else
+            echo "SECRET_ACCESSED=false"
+          fi
