@@ -1,0 +1,10 @@
+name: Deploy Race Test
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: race-test-prod
+    steps:
+      - run: echo "Deployed at $(date)"
